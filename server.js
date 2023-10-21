@@ -7,6 +7,7 @@ const app = express();
 const expressLayouts = require("express-ejs-layouts");
 
 const indexRouter = require("./routes/index");
+const authorRouter = require("./routes/authors");
 
 app.set("view engine","ejs");
 app.set("views", __dirname + "/views");
@@ -21,5 +22,6 @@ db.on("error", error => console.log(error));
 db.once("open", () => console.log("YOOHOOOO"))
 
 app.use("/", indexRouter);
+app.use("/authors", authorRouter);
 
 app.listen(process.env.PORT || 3000);
