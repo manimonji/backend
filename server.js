@@ -15,11 +15,13 @@ app.set("layout", "layouts/layout");
 app.use(expressLayouts)
 app.use(express.static("public"));
 
-const mongoose = require("mongoose");
-mongoose.connect(process.env.DATABASE_URL);
-const db = mongoose.connection;
-db.on("error", error => console.log(error));
-db.once("open", () => console.log("YOOHOOOO"))
+if (process.env.NODE_ENV == 'production') {
+    const mongoose = require("mongoose");
+    mongoose.connect(process.env.DATABASE_URL);
+    const db = mongoose.connection;
+    db.on("error", error => console.log(error));
+    db.once("open", () => console.log("YOOHOOOO"))
+}
 
 app.use("/", indexRouter);
 app.use("/authors", authorRouter);
