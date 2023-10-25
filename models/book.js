@@ -21,10 +21,6 @@ const bookSchema = new mongoose.Schema({
         required: true,
         default: Date.now()
     },
-    // coverImageName: {
-    //     type: String,
-    //     required: true
-    // },
     coverImage: {
         type: Buffer,
         required: true
@@ -36,7 +32,7 @@ const bookSchema = new mongoose.Schema({
     author: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
-        ref: "Auhtor"
+        ref: "Author"
     }
 });
 
