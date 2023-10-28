@@ -3,20 +3,34 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
-        <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet" />
-        <link
-            href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css"
-            rel="stylesheet"
-        />
-        <script defer src="https://unpkg.com/filepond/dist/filepond.js"></script>
-        <script defer src="https://unpkg.com/filepond-plugin-file-encode/dist/filepond-plugin-file-encode.js"></script>
-        <script defer src="https://unpkg.com/filepond/dist/filepond.js"></script>
-        <script defer src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
-        <script defer src="https://unpkg.com/filepond/dist/filepond.js"></script>
-        <script defer src="https://unpkg.com/filepond-plugin-image-resize/dist/filepond-plugin-image-resize.js"></script>
-        <script defer src="https://unpkg.com/filepond/dist/filepond.js"></script>
-        <script defer src="/js/file-upload.js"></script>
+        <% if (locals.needsFilepond) {%>
+            <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
+            <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet" />
+            <link
+                href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css"
+                rel="stylesheet"
+            />
+            <script defer src="https://unpkg.com/filepond/dist/filepond.js"></script>
+            <script defer src="https://unpkg.com/filepond-plugin-file-encode/dist/filepond-plugin-file-encode.js"></script>
+            <script defer src="https://unpkg.com/filepond/dist/filepond.js"></script>
+            <script defer src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
+            <script defer src="https://unpkg.com/filepond/dist/filepond.js"></script>
+            <script defer src="https://unpkg.com/filepond-plugin-image-resize/dist/filepond-plugin-image-resize.js"></script>
+            <script defer src="https://unpkg.com/filepond/dist/filepond.js"></script>
+            <script defer src="/js/file-upload.js"></script>
+        <% } %>
+        <link rel="stylesheet" href="/css/layout.css">
+        <% if (locals.cssFiles) { %>
+            <% cssFiles.forEach(cssFile => { %>
+                <link rel="stylesheet" href="/css/<%- cssFile %>">
+            <% }); %>
+        <% } %>
+        <% if (locals.jsFiles) { %>
+            <% jsFiles.forEach(jsFile => { %>
+                <script src="/js/<%- jsFile %>"></script>
+            <% }); %>
+        <% } %>
+        <script defer src="/js/header.js"></script>
         <title>Mybrary</title>
     </head>
     <body>
@@ -24,5 +38,4 @@
         <%- include("../partials/error-message.ejs") %>
         <%- body %>
     </body>
-
 </html>

@@ -1,0 +1,36 @@
+main {
+    padding-inline: 1rem;
+
+    #author {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+
+        a {
+            margin-inline-start: auto;
+        }
+    }
+
+    .book {
+        margin-top: 1rem;
+        a {
+            img {
+                display: flex;
+                max-width: 100%;
+
+                border-radius: .5rem;
+            }
+        }
+    }
+
+    >a:last-child {
+        display: block;
+
+        padding: 1rem;
+
+        color: #000;
+
+        text-align: center;
+        text-decoration: none;
+    }
+}

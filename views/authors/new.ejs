@@ -1,6 +1,10 @@
-<h1>New Author</h1>
-<form action="/authors" method="POST">
-    <%- include("_form_fields.ejs") %>
-    <a href="/authors">Go Back</a>
-    <button type="submit">Create</button>
-</form>
+<main>
+    <h1>New Author</h1>
+    <form action="/authors" method="POST">
+        <%- include("_form_fields.ejs") %>
+        <div class="buttons">
+            <button type="submit" class="btn primary">Create</button>
+            <a href="/authors" class="btn secondary">Go Back</a>
+        </div>
+    </form>
+</main>

@@ -1,0 +1,33 @@
+@import url("buttons.css");
+@import url("header.css");
+
+@font-face {
+    font-family: figtree;
+    src: url("../fonts/figtree.ttf");
+}
+
+@font-face {
+    font-family: figtree;
+    font-style: italic;
+    src: url("../fonts/figtree-italic.ttf");
+}
+
+:root {
+    --primary-color: #035bbc;
+    --primary-color-dark: #013a9a;
+    --secondary-color: #ddd;
+    --secondary-color-dark: #bbb;
+    --danger-color: #cf1e2b;
+    --danger-color-dark: #ad0c09;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+
+    font-family: figtree;
+}
+
+* {
+    font-family: inherit;
+}

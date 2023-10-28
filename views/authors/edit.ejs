@@ -1,6 +1,10 @@
-<h1>Edit Author</h1>
-<form action="/authors/<%- author.id %>?_method=PUT" method="POST">
-    <%- include("_form_fields.ejs") %>
-    <a href="/authors/<%- author.id %>">Go Back</a>
-    <button type="submit">Update</button>
-</form>
+<main>
+    <h1>Edit Author</h1>
+    <form action="/authors/<%- author.id %>?_method=PUT" method="POST">
+        <%- include("_form_fields.ejs") %>
+        <div class="buttons">
+            <button type="submit" class="btn primary">Update</button>
+            <a href="/authors/<%- author.id %>" class="btn secondary">Go Back</a>
+        </div>
+    </form>
+</main>

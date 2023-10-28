@@ -1,6 +1,10 @@
-<h1>New Book</h1>
-<form action="/books" method="POST">
-    <%- include("_form_fields.ejs") %>
-    <a href="/books">Go Back</a>
-    <button type="submit">Create</button>
-</form>
+<main>
+    <h1>New Book</h1>
+    <form action="/books" method="POST">
+        <%- include("_form_fields.ejs") %>
+        <div class="buttons">
+            <a href="/books" class="btn primary">Go Back</a>
+            <button type="submit" class="btn secondary">Create</button>
+        </div>
+    </form>
+</main>

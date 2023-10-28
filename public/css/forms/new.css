@@ -1,0 +1,47 @@
+main{
+    padding-inline: 2rem;
+
+    h1{
+        margin-block: 0;
+
+        text-align: center;
+    }
+    
+    form {
+        label{
+            display: block;
+
+            margin-bottom: .25em;
+            margin-inline-start: .75em;
+        }
+        input,
+        select,
+        textarea {
+            box-sizing: border-box;
+            display: block;
+
+            width: 100%;
+
+            padding: .75em;
+            margin-bottom: 1em;
+
+            border: 1px solid #000;
+            border-radius: .75em;
+
+            font-size: 1rem;
+        }
+        select{
+            background-image: url("../../images/icons/arrow-down.svg");
+            background-repeat: no-repeat;
+            background-position: calc(100% - .5rem);
+
+            -moz-appearance:none; /* Firefox */
+            -webkit-appearance:none; /* Safari and Chrome */
+            appearance:none;
+        }
+    }
+}
+.buttons{
+    display: flex;
+    gap: 1rem;
+}

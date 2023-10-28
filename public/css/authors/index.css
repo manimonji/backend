@@ -1,0 +1,42 @@
+main {
+    h2 {
+        text-align: center;
+    }
+
+    form {
+        display: flex;
+        gap: 1rem;
+
+        width: fit-content;
+
+        margin-inline: auto;
+
+        * {
+            font-size: 1rem;
+        }
+
+        input {
+            box-sizing: border-box;
+            display: block;
+
+            padding: .75em;
+
+            border: 1px solid #000;
+            border-radius: .75em;
+
+            font-size: 1rem;
+        }
+    }
+
+    .authors {
+        display: grid;
+        grid-template-columns: 1fr auto auto auto;
+        align-items: center;
+        gap: 1rem;
+
+        margin: 1rem;
+        form{
+            margin: 0;
+        }
+    }
+}

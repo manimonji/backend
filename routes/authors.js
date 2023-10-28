@@ -7,31 +7,31 @@ router.get("/", async (req, res) => {
     let searchOptions = req.query.name && req.query.name !== "" ? { name: new RegExp(req.query.name, "i") } : {};
     try {
         const authors = await Author.find(searchOptions);
-        res.render("authors/index", { authors: authors, searchOptions: req.query })
+        res.render("authors/index", { authors: authors, searchOptions: req.query, cssFiles: ["authors/index.css"] });
     } catch {
-        res.redirect("/")
+        res.redirect("/");
     }
 });
 
 router.get("/new", (req, res) => {
-    res.render("authors/new", { author: new Author() });
+    res.render("authors/new", { author: new Author(), cssFiles: ["forms/new.css"] });
 });
 
 router.get("/:id", async (req, res) => {
     try {
         const author = await Author.findById(req.params.id);
-        const books = await Book.find({ author: author.id }).limit(6).exec(); 
-        res.render("authors/show", {author: author, booksByAuthor: books});
+        const books = await Book.find({ author: author.id }).limit(6).exec();
+        res.render("authors/show", { author: author, booksByAuthor: books, cssFiles: ["authors/show.css"] });
     } catch {
         res.redirect("/");
-    }  
+    }
 });
 
 router.get("/:id/edit", async (req, res) => {
     try {
         const author = await Author.findById(req.params.id);
-        res.render("authors/edit", { author: author });
-    } catch(err) {
+        res.render("authors/edit", { author: author, cssFiles: ["forms/new.css"] });
+    } catch (err) {
         console.log(err);
         redirect("/authors");
     }
@@ -44,7 +44,7 @@ router.put("/:id", async (req, res) => {
         author.name = req.body.name;
         await author.save();
         res.redirect("/authors/" + author.id);
-    } catch(err) {
+    } catch (err) {
         if (!author) {
             res.redirect("/authors")
         }
@@ -61,7 +61,7 @@ router.delete("/:id", async (req, res) => {
         author = await Author.findById(req.params.id);
         await author.deleteOne();
         res.redirect("/authors");
-    } catch(err) {
+    } catch (err) {
         console.log(err);
         res.redirect(`/authors/${author.id}`);
     }

@@ -1,12 +1,18 @@
-<h2><%- book.title %></h2>
-<img width="500px" src="<%- book.coverImagePath  %>">
-<div>Author: <a href="/authors/<%- book.author.id %>"><%- book.author.name %></a></div>
-<div>Publish Date: <%- book.publishDate.toDateString() %></div>
-<div>Page Count: <%- book.pageCount %></div>
-<div><%- book.description %></div>
-
-<a href="/authors/<%- book.author.id  %>">View Author</a>
-<a href="/books/<%- book.id  %>/edit">Edit</a>
-<form method="POST" action="/books/<%- book.id %>?_method=DELETE">
-    <button type="submit">Delete</button>
-</form>
+<main>
+    <h2><%- book.title %></h2>
+    <img width="500px" src="<%- book.coverImagePath  %>">
+    <div id="details">
+        <div>By <a href="/authors/<%- book.author.id %>"><%- book.author.name %></a></div>
+        <div>Published in <%- book.publishDate.toDateString() %></div>
+        <div id="page-count"><%- book.pageCount %> Pages</div>
+        <div id="description"><%- book.description %></div>
+    </div>
+    
+    <div id="buttons">
+        <a href="/authors/<%- book.author.id  %>" class="btn secondary">View Author</a>
+        <a href="/books/<%- book.id  %>/edit" class="btn primary">Edit</a>
+        <form method="POST" action="/books/<%- book.id %>?_method=DELETE">
+            <button type="submit" class="btn danger">Delete</button>
+        </form>
+    </div>
+</main>

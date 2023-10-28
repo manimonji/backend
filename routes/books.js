@@ -17,7 +17,8 @@ router.get("/", async (req, res) => {
         const books = await query.exec();
         res.render("books/index", {
             books: books,
-            searchOptions: req.query
+            searchOptions: req.query,
+            cssFiles: ["books/index.css"]
         });
     } catch (err) {
         console.log(err);
@@ -32,8 +33,8 @@ router.get("/new", (req, res) => {
 router.get("/:id", async (req, res) => {
     try {
         const book = await Book.findById(req.params.id).populate("author").exec();
-        res.render("books/show", { book: book });
-    } catch(err) {
+        res.render("books/show", { book: book, cssFiles: ["books/show.css"] });
+    } catch (err) {
         console.log(err);
         res.redirect("/");
     }
@@ -56,13 +57,12 @@ router.post("/", async (req, res) => {
     saveCover(book, req.body.cover);
     try {
         const newBook = await book.save();
-        res.redirect("books")
+        res.redirect(`books/${newBook.id}`)
     } catch (err) {
         console.log(err);
         renderFormPage(res, book, "new", true);
     }
 });
-
 router.put("/:id", async (req, res) => {
     let book;
     try {
@@ -106,7 +106,9 @@ const renderFormPage = async (res, book, form, hasError = false) => {
         const authors = await Author.find({});
         const params = {
             authors: authors,
-            book: book
+            book: book,
+            needsFilepond: true,
+            cssFiles: ["forms/new.css"]
         };
         if (hasError) params.errorMessage = `Error ${form == "new" ? "Creating" : "Updating"} Book.`
         res.render(`books/${form}`, params);
